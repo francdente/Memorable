@@ -12,6 +12,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -45,9 +46,11 @@ public class ScreenSlidePageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Set album name
+        Button button = view.findViewById(R.id.title_button);
+        button.setText(album.getTitle());
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setAdapter(customAdapter);
-        customAdapter.notifyDataSetChanged();
         setFloatingButton(view);
 
     }

@@ -5,9 +5,12 @@ import java.util.ArrayList;
 public class Album {
     private ArrayList<ContentNode> nodes;
     private int id;
+    private String title;
 
-    public Album(int id, ArrayList<ContentNode> nodes) {
+    public Album(int id, String title, ArrayList<ContentNode> nodes) {
         this.nodes = nodes;
+        this.id = id;
+        this.title = title;
     }
 
     public ArrayList<ContentNode> getNodes() {
@@ -28,5 +31,9 @@ public class Album {
 
     public int getLength() {
         return nodes.size();
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -23,14 +24,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * (custom ViewHolder)
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
+        LinearLayout view;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-            cardView = view.findViewById(R.id.card_view);
+            this.view = view.findViewById(R.id.linear_layout);
         }
         public void fillContent(ContentNode node){
-            cardView.addView(node.createView(cardView.getContext()));
+            view.addView(node.createView(view.getContext()));
         }
     }
 

@@ -7,11 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 import java.util.ArrayList;
@@ -35,19 +37,33 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         // Find the view pager and set sliding animation
         viewPager = view.findViewById(R.id.pager);
-        viewPager.setPageTransformer(new ZoomOutPageTransformer());
+        viewPager.setPageTransformer(new CompositePageTransformer());
 
         //Hard-coded initilization data
-        ContentNode node1 = new TextNode(1,1,"te\n\n\n\n\n\n\nxtn\n\n\node1");
-        ContentNode node2 = new TextNode(1,1,"te\n\n\n\n\n\n\n\n\nxtnode2");
+        ContentNode node1 = new TextNode(1,1,"textnode1");
+        ContentNode node2 = new TextNode(1,1,"textnode2");
+        ContentNode node3 = new TextNode(1,1,"textnode3");
+        ContentNode node4 = new TextNode(1,1,"textnode4");
+        ContentNode node5 = new ImageNode(1, 1, "landscape1", R.drawable.image1);
+        ContentNode node6 = new ImageNode(1, 1, "landscape2", R.drawable.image2);
+        ContentNode node7 = new ImageNode(1, 1, "landscape3", R.drawable.image3);
         albums = new ArrayList<Album>();
-        ArrayList<ContentNode> contentNodes = new ArrayList<ContentNode>();
-        contentNodes.add(node1);
-        contentNodes.add(node2);
-        Album album = new Album(1, contentNodes);
-        albums.add(album);
-        albums.add(album);
-        albums.add(album);
+        ArrayList<ContentNode> contentNodes1 = new ArrayList<ContentNode>();
+        ArrayList<ContentNode> contentNodes2 = new ArrayList<ContentNode>();
+        ArrayList<ContentNode> contentNodes3 = new ArrayList<ContentNode>();
+        contentNodes1.add(node1);
+        contentNodes1.add(node2);
+        contentNodes1.add(node5);
+        contentNodes2.add(node3);
+        contentNodes2.add(node6);
+        contentNodes3.add(node4);
+        contentNodes3.add(node7);
+        Album album1 = new Album(1, "TODAY", contentNodes1);
+        Album album2 = new Album(2, "Album 2", contentNodes2);
+        Album album3 = new Album(3, "Album 3", contentNodes3);
+        albums.add(album1);
+        albums.add(album2);
+        albums.add(album3);
 
         // Instantiate pagerAdapter for slider
         pagerAdapter = new ScreenSlidePagerAdapter(getActivity(), albums);
@@ -59,9 +75,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
-
-
 
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
