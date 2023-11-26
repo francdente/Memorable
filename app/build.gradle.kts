@@ -43,10 +43,13 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //Card views
+    implementation ("androidx.cardview:cardview:1.0.0")
+
     //ViewPager2
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
 
-    //Chip navigation
-    implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
+    //Bottom bar
+    implementation ("com.github.ertugrulkaragoz:SuperBottomBar:0.4")
+
 }

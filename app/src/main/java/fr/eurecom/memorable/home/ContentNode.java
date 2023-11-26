@@ -13,6 +13,9 @@ public abstract class ContentNode {
         this.day = day;
     }
 
+    /**
+     Create and return the view that will represent the given node
+     */
     public abstract View createView(Context context);
 
 

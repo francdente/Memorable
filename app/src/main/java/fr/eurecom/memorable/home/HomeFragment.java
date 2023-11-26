@@ -2,6 +2,8 @@ package fr.eurecom.memorable.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -10,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class HomeFragment extends Fragment {
     private FragmentStateAdapter pagerAdapter;
     private ArrayList<Album> albums;
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -28,25 +32,36 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        // Find the view pager and set sliding animation
         viewPager = view.findViewById(R.id.pager);
         viewPager.setPageTransformer(new ZoomOutPageTransformer());
-        // Instantiate a ViewPager2 and a PagerAdapter.
 
+        //Hard-coded initilization data
         ContentNode node1 = new TextNode(1,1,"te\n\n\n\n\n\n\nxtn\n\n\node1");
         ContentNode node2 = new TextNode(1,1,"te\n\n\n\n\n\n\n\n\nxtnode2");
         albums = new ArrayList<Album>();
         ArrayList<ContentNode> contentNodes = new ArrayList<ContentNode>();
         contentNodes.add(node1);
         contentNodes.add(node2);
-        Album album = new Album(contentNodes);
+        Album album = new Album(1, contentNodes);
+        albums.add(album);
+        albums.add(album);
         albums.add(album);
 
+        // Instantiate pagerAdapter for slider
         pagerAdapter = new ScreenSlidePagerAdapter(getActivity(), albums);
         viewPager.setAdapter(pagerAdapter);
 
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+
 
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
