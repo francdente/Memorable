@@ -1,39 +1,32 @@
 package fr.eurecom.memorable.home;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import fr.eurecom.memorable.R;
+import fr.eurecom.memorable.home.contentNodes.TextNode;
 
 public class ScreenSlidePageFragment extends Fragment {
-    private CustomAdapter customAdapter;
+    private RecyclerViewAdapter recyclerViewAdapter;
     private Album album;
     private FloatingActionButton mAddFab, mAddAudioFab, mAddTextFab, mAddImageFab;
     private Boolean isAllFabsVisible;
     public ScreenSlidePageFragment(Album album) {
         this.album = album;
-        customAdapter = new CustomAdapter(album);
+        recyclerViewAdapter = new RecyclerViewAdapter(album);
     }
 
 
@@ -50,7 +43,7 @@ public class ScreenSlidePageFragment extends Fragment {
         Button button = view.findViewById(R.id.title_button);
         button.setText(album.getTitle());
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(customAdapter);
+        recyclerView.setAdapter(recyclerViewAdapter);
         setFloatingButton(view);
 
     }
@@ -93,7 +86,7 @@ public class ScreenSlidePageFragment extends Fragment {
         mAddTextFab.setOnClickListener(
                 v -> {
                     album.addNode(new TextNode(album.getId(), 0, ""));
-                    customAdapter.notifyItemInserted(album.getNodes().size());
+                    recyclerViewAdapter.notifyItemInserted(album.getNodes().size());
                 });
     }
 

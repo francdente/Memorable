@@ -2,6 +2,8 @@ package fr.eurecom.memorable.home;
 
 import java.util.ArrayList;
 
+import fr.eurecom.memorable.home.contentNodes.ContentNode;
+
 public class Album {
     private ArrayList<ContentNode> nodes;
     private int id;

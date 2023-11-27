@@ -15,7 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -25,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DetailsActivity">
+            <!-- Add any necessary intent filters, meta-data, or other activity configuration here -->
+        </activity>
+
     </application>
 
 </manifest>

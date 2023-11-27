@@ -1,10 +1,8 @@
-package fr.eurecom.memorable.home;
+package fr.eurecom.memorable.home.contentNodes;
 
-import android.animation.LayoutTransition;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,10 +11,11 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import fr.eurecom.memorable.R;
+import fr.eurecom.memorable.home.contentNodes.ContentNode;
 
-public class ImageNode extends ContentNode{
+public class ImageNode extends ContentNode {
     private LinearLayout layout;
-    private EditText details;
+    private TextView details;
     private ImageView imageView;
     private String text;
     private int image;
@@ -32,7 +31,7 @@ public class ImageNode extends ContentNode{
 
         // Finding layout elements for enabling collapsing and expanding
         layout = view.findViewById(R.id.linear_layout);
-        details = view.findViewById(R.id.edit_text);
+        details = view.findViewById(R.id.text_view);
         imageView = view.findViewById(R.id.image_view);
 
         // Set content of the view
@@ -41,13 +40,21 @@ public class ImageNode extends ContentNode{
 
         //Set listener for making it collapse and expand
         TextView textView = view.findViewById(R.id.author);
-        textView.setOnClickListener(this::toggle);
+        //textView.setOnClickListener(this::toggle);
 
-        //Enable layout animations
-        layout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         return view;
 
+    }
+
+    @Override
+    public View createDetailedView(Context context) {
+        return null;
+    }
+
+    @Override
+    public View createEditView(Context context) {
+        return null;
     }
 
     private void toggle(View view) {

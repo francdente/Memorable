@@ -1,19 +1,20 @@
 package fr.eurecom.memorable.home;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import fr.eurecom.memorable.DetailsActivity;
 import fr.eurecom.memorable.R;
+import fr.eurecom.memorable.home.contentNodes.ContentNode;
+import fr.eurecom.memorable.home.contentNodes.TextNode;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private static final int TEXT_LAYOUT = 0;
     private static final int IMAGE_LAYOUT = 1;
     private static final int AUDIO_LAYOUT = 2;
@@ -31,6 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             this.view = view.findViewById(R.id.linear_layout);
         }
         public void fillContent(ContentNode node){
+            view.removeAllViews();
             view.addView(node.createView(view.getContext()));
         }
     }
@@ -41,7 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * @param album Album containing the data to populate views to be used
      * by RecyclerView
      */
-    public CustomAdapter(Album album) {
+    public RecyclerViewAdapter(Album album) {
         this.album = album;
     }
 

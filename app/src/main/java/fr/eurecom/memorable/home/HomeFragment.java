@@ -13,12 +13,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 import java.util.ArrayList;
 
 import fr.eurecom.memorable.R;
+import fr.eurecom.memorable.home.contentNodes.ContentNode;
+import fr.eurecom.memorable.home.contentNodes.ImageNode;
+import fr.eurecom.memorable.home.contentNodes.TextNode;
 
 public class HomeFragment extends Fragment {
     private ViewPager2 viewPager;
